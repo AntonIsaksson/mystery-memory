@@ -1,0 +1,41 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700);
+
+body {
+    box-sizing: border-box;
+    text-align: center;
+    font-family: Papyrus, fantasy;;
+    margin: 0;
+    background: url('https://wallpaperaccess.com/full/636909.jpg') no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+.heading {
+    padding: 2rem;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.bg-cards {
+    margin: 2rem 2rem 0;
+    padding: 2rem;
+    width: 60vw;
+    background-color: rgba(139, 217, 216, 0.7);
+}
+
+.card {
+    border: 1px solid rgba(250, 219, 191, 0.8);
+    margin: 2rem 0 0;
+    height: 7rem;
+    width: 7rem;
+    cursor: pointer;
+}
+
+.front {
+    background-color: rgb(225, 228, 57);
+}
+
+.back {
+    background-color: seagreen;
+}
