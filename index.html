@@ -39,8 +39,27 @@
     <script>
         $(document).ready(function() {
 
-            $('.card').click(function(){
-                $(this).toggleClass('back');
+            initialize();
+            function initialize() {
+                
+
+                let creatures1 = [1, 1, 2, 2, 3, 3];
+                creatures1.sort(function(a, b) {
+                    return 0.5 - Math.random()
+                });
+                
+                assignCards(creatures1); 
+            }
+            
+            function assignCards(creatures1) {
+                $(".card").each(function(index) {
+                    $(this).attr("data-card-value", creatures1[index]);
+                        $(this).append("<span>" + creatures1[index] + "</span>");
+                });
+            }
+
+            $(".card").click(function(){
+                $(this).toggleClass("back");
             });
 
 
