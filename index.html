@@ -39,6 +39,10 @@
     <script>
         $(document).ready(function() {
 
+            let firstClick = null;
+            let secondClick = null;
+            let clicked = false;
+
             initialize();
             function initialize() {
                 
@@ -60,13 +64,25 @@
 
             $(".card").click(function(){
                 $(this).toggleClass("back");
+                if (!clicked) {
+                    firstClick = $(this).attr("data-card-value");
+                    clicked = true;
+                    console.log(firstClick);
+                } else {
+                    secondClick = $(this).attr("data-card-value");
+                    console.log(secondClick);
+                    
+                    if (firstClick === secondClick) {
+                        $(".card[data-card-value='"+firstClick+"']").addClass("bg-green");
+                    } else {
+                        $(".card[data-card-value='"+firstClick+"']").removeClass("back");
+                        $(".card[data-card-value='"+secondClick+"']").removeClass("back");
+                    }
+                    clicked = false;
+                    firstClick = null;
+                    secondClick = null;
+                }
             });
-
-
-
-
-
-
 
         });
     </script>
