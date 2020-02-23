@@ -5,7 +5,8 @@ body {
     text-align: center;
     font-family: Papyrus, fantasy;;
     margin: 0;
-    background: url('https://wallpaperaccess.com/full/636909.jpg') no-repeat center center fixed;
+    /*background: url('https://wallpaperaccess.com/full/636909.jpg') no-repeat center center fixed;*/
+    background: url('https://i.pinimg.com/originals/95/88/22/958822d27856da0f0bfd921a3921f4b9.jpg') no-repeat center fixed;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -15,27 +16,58 @@ body {
     padding: 2rem;
     font-size: 3rem;
     font-weight: 700;
+    color: rgb(15, 25, 26);
+    text-shadow: 0px 3px 0px #b2a98f,
+                 0px 14px 10px rgba(0,0,0,0.15),
+                 0px 24px 2px rgba(0,0,0,0.1),
+                 0px 34px 30px rgba(0,0,0,0.1);
 }
 
 .bg-cards {
-    margin: 2rem 2rem 0;
-    padding: 2rem;
+    margin: 5rem 2rem 0;
     width: 60vw;
-    background-color: rgba(139, 217, 216, 0.7);
+    background-color: rgba(63, 97, 129, 0.637);
+    padding-bottom: 2rem;
+    border-radius: 2%;
+    box-shadow: 5px 5px 5px 5px rgba(27, 28, 29, 0.603);
 }
 
 .card {
     border: 1px solid rgba(250, 219, 191, 0.8);
-    margin: 2rem 0 0;
-    height: 7rem;
-    width: 7rem;
+    position: relative;
+    margin: 2rem 1rem 0;
+    width: 10rem;
+    height: 10rem;
     cursor: pointer;
 }
 
+/*.card:hover {
+    box-shadow: 3px 3px 3px #b2a98f ;
+}*/
+
 .front {
-    background-color: rgb(225, 228, 57);
+    background-color: black;
+    background: url('https://c4.wallpaperflare.com/wallpaper/672/320/912/how-to-train-your-dragon-toothless-how-to-train-your-dragon-print-wallpaper-preview.jpg') no-repeat center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    filter:  grayscale(100%);
+
 }
 
 .back {
-    background-color: seagreen;
+    background-color: #3770ac9f;
+}
+
+.correct {
+    background-color: rgba(66, 124, 66, 0.658);
+    cursor: default;
+}
+
+
+.imgClass, .memoryImg {
+    max-height: 9rem;
+    text-align: center;
+
 }
