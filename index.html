@@ -8,83 +8,125 @@
     
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     
-    <title>Mystery Memory Game</title>
+    <title>How To Find Your Dragon!</title>
 </head>
 <body>
-    
     <div class="container-fluid mx-auto bg-cards">
-        <h1 class="heading col-12 mx-auto">Mistery Memory Game!</h1>
-        <div class="row">
-            <div class="col-2">
+        <h1 class="heading col-12 mx-auto">How To Find Your Dragon!</h1>
+        <div class="row offset-1 col-10">
+            <div class="col-lg-4">
                 <div class="card front mx-auto col-12"></div>
             </div>
-            <div class="col-2">
+            <div class="col-lg-4">
                 <div class="card front mx-auto col-12"></div>
             </div>
-            <div class="col-2">
+            <div class="col-lg-4">
                 <div class="card front mx-auto col-12"></div>
             </div>
-            <div class="col-2">
+        </div>
+        <div class="row offset-1 col-10">
+            <div class="col-lg-4">
                 <div class="card front mx-auto col-12"></div>
             </div>
-            <div class="col-2">
+            <div class="col-lg-4">
                 <div class="card front mx-auto col-12"></div>
             </div>
-            <div class="col-2">
+            <div class="col-lg-4">
                 <div class="card front mx-auto col-12"></div>
-            </div>  
+            </div>
         </div>
     </div>
 
     <script>
         $(document).ready(function() {
 
-            let firstClick = null;
-            let secondClick = null;
-            let clicked = false;
+            initializeGame();
+            let flippedCards = [];
+            
+            //Function 1 - Initialize Game
+            function initializeGame() {
+            
+                let creaturesArray = [0, 0, 1, 1, 2, 2];
+                let creaturesImages = [
+                    "https://jonathansworlddotcom.files.wordpress.com/2013/07/1-terrible-terror.png",
+                    "https://wm.schoolofdragons.com/SoD/Joomla/templates/schoolofdragons/images/SODJ-Gronckle.png",
+                    "https://i.pinimg.com/originals/ea/40/13/ea4013c07c1af0fe15b9999ca8afb94a.png"
+                ];
 
-            initialize();
-            function initialize() {
+                indexArrayShuffled = shuffleArray(creaturesArray);
                 
-
-                let creatures1 = [1, 1, 2, 2, 3, 3];
-                creatures1.sort(function(a, b) {
-                    return 0.5 - Math.random()
-                });
+                //Assign cards their indexes
+                $('.card').each(function(index) {
+                    $(this).attr('data-card-index', indexArrayShuffled[index]);
+                    //$(this).append("<span>" + creaturesArrayShuffled[index] + "</span>");
                 
-                assignCards(creatures1); 
+                    //Add onClick eventlisteners to all cards
+                    $(this).on('click', flipCard);
+                    $(this).html("<img class='memoryImg img-"+indexArrayShuffled[index]+"' style='display: none;' src='"+creaturesImages[indexArrayShuffled[index]]+"'>");
+                }); 
+                //assignCards(creaturesArray); 
             }
             
-            function assignCards(creatures1) {
-                $(".card").each(function(index) {
-                    $(this).attr("data-card-value", creatures1[index]);
-                        $(this).append("<span>" + creatures1[index] + "</span>");
-                });
+            function flipCard() {
+    
+                //Push the card index to the array only if the card isn't green already
+                flippedCards.push( $(this) );
+                $(this).toggleClass('back').toggleClass("front");
+                //Show image
+                $(this).find('img').css('display','inline');
+                //Remove the event listener so we don't register it twice
+                $(this).off('click', flipCard);
+
+                let sameCardIndex = false;
+
+                if ( flippedCards.length > 1 && flippedCards[0].data('card-index') == flippedCards[1].data('card-index') ) {
+                    sameCardIndex = true;
+                }
+
+                //User chooses the correct cards
+                if ( (flippedCards.length > 1) && sameCardIndex ) {
+
+                    flippedCards.forEach(card => {
+                        card.addClass('correct');
+                    });
+
+                    flippedCards = [];
+
+                //Wrong cards or user clicks same card twice
+                } else if ( flippedCards.length > 1 && !sameCardIndex) {
+                    
+                    setTimeout(() => {
+                        flippedCards.forEach(element => {
+                            //Add the event listener again
+                            element.on('click', flipCard);
+                            element.toggleClass('back').toggleClass("front");
+                            element.find('img').css('display','none');
+                        });
+                        flippedCards = [];
+                    }, 500);
+
+                }
+
+                gameFinished();
+
             }
 
-            $(".card").click(function(){
-                $(this).toggleClass("back");
-                if (!clicked) {
-                    firstClick = $(this).attr("data-card-value");
-                    clicked = true;
-                    console.log(firstClick);
-                } else {
-                    secondClick = $(this).attr("data-card-value");
-                    console.log(secondClick);
-                    
-                    if (firstClick === secondClick) {
-                        $(".card[data-card-value='"+firstClick+"']").addClass("bg-green");
-                    } else {
-                        $(".card[data-card-value='"+firstClick+"']").removeClass("back");
-                        $(".card[data-card-value='"+secondClick+"']").removeClass("back");
-                    }
-                    clicked = false;
-                    firstClick = null;
-                    secondClick = null;
-                }
-            });
-
+            function shuffleArray(arr) {
+                for(var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
+                return arr;
+            }
+                        
+            function gameFinished() {
+            
+        }
+ 
+            /*creaturesArray.sort(function(a, b) {
+                    return 0.5 - Math.random()
+                });*/
+            
+            
         });
+        
     </script>
 </body>
 </html>
