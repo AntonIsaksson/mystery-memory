@@ -33,12 +33,11 @@ body {
 }
 
 .card {
-    border: 1px solid rgba(250, 219, 191, 0.8);
+    border: 2px solid rgb(241, 240, 236);
     position: relative;
-    margin: 2rem 1rem 0;
-    width: 10rem;
+    margin: 2rem 0 0;
+    width: 12rem;
     height: 10rem;
-    cursor: pointer;
 }
 
 /*.card:hover {
@@ -53,7 +52,11 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     filter:  grayscale(100%);
+    cursor: pointer;
+}
 
+.front:hover {
+    box-shadow: 3px 3px 3px #b2a98f;
 }
 
 .back {
@@ -62,6 +65,7 @@ body {
 
 .correct {
     background-color: rgba(66, 124, 66, 0.658);
+    border: 2px solid rgba(178, 169, 143, 0.897);
     cursor: default;
 }
 
