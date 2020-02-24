@@ -11,42 +11,25 @@
     <title>How To Find Your Dragon!</title>
 </head>
 <body>
-    <!--Success Modal-->
-    <div class="modal" id="success-modal" tabindex="-1" role="dialog">
+    
+    <div class="modal" id="my-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h3 class="modal-title mx-auto">Nice Job!</h3>  
-            </div>
-            <div class="modal-body">
-                <p>You move on to the next round</p>
-              </div>
-            <div class="modal-footer">
-              <button type="button" class="mx-auto btn btn-info"><a href="file:///C:/Users/ASUS/Documents/Visual%20Coding/milestone-project-2/mystery-memory/level2.html">Level 2</a></button>
-            </div>
-          </div>
-        </div>
-    </div>
-
-    <!--Game Over Modal-->
-    <div class="modal fade" id="game-over-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Game Over</h5>
+              <h5 class="modal-title">Nice Job!</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <p>Press the button to try again!</p>
+              <p>You move on to the next round!</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary"><a href="/mystery-memory/index.html">Restart</a></button>
+              <button type="button" class="btn btn-primary"><a href="/mystery-memory/level2.html">Level 2</a></button>
             </div>
           </div>
         </div>
-    </div>
+      </div>
     
     
     <div class="container-fluid mx-auto bg-cards">
@@ -54,7 +37,7 @@
 
         <div class="container">
             <span id="timer">
-              <span id="time">59</span>     
+              <span id="time">59</span>Seconds      
             </span>
         </div>
 
@@ -69,7 +52,7 @@
                 <div class="card front mx-auto col-12"></div>
             </div>
         </div>
-        <div class="row offset-1 col-10">
+        <!--<div class="row offset-1 col-10">
             <div class="col-lg-4">
                 <div class="card front mx-auto col-12"></div>
             </div>
@@ -79,7 +62,7 @@
             <div class="col-lg-4">
                 <div class="card front mx-auto col-12"></div>
             </div>
-        </div>
+        </div>-->
     </div>
 
     <script>
@@ -119,13 +102,13 @@
             
             //https://jsfiddle.net/satyasrinivaschekuri/y03m54Le/
             
-            var counter = 10;
+            var counter = 59;
             var interval = setInterval(function() {
                 counter--;
 
                 if (counter <= 0) {
                         clearInterval(interval);
-                    $('#timer').html("0"); 
+                    $('#timer').html(""); 
                     return;
                 }else{
                     $('#time').text(counter);
@@ -184,15 +167,9 @@
         }
                     
         function gameFinished() {
-            
-            var success = $('.front').length === 0 && $('#time').text() > 0;
-            var gameOver = $('.front').length > 0 && $('#time').text() < 1; //not working as expected
-
-            if (success) {
-                $('#success-modal').show();
-                //stop startTimer here
-            } else if (gameOver) {
-                $('#game-over-modal').show();
+            if ( $('.front').length === 0) {
+                $('.modal').show();
+                //alert("Yay!");
             }
         }
     });

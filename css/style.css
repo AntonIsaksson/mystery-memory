@@ -75,3 +75,16 @@ body {
     text-align: center;
 
 }
+
+.modal {
+    text-align: center;
+}
+
+.modal-footer a {
+    text-decoration: none;
+    color: lemonchiffon;
+}
+
+.modal-title, .modal-body>p, .modal-footer>button {
+    text-align: center;
+}
