@@ -5,8 +5,8 @@ body {
     text-align: center;
     font-family: Papyrus, fantasy;;
     margin: 0;
-    /*background: url('https://wallpaperaccess.com/full/636909.jpg') no-repeat center center fixed;*/
-    background: url('https://i.pinimg.com/originals/95/88/22/958822d27856da0f0bfd921a3921f4b9.jpg') no-repeat center fixed;
+    /*background: url('https://i.pinimg.com/originals/95/88/22/958822d27856da0f0bfd921a3921f4b9.jpg') no-repeat center fixed;*/
+    background: url('../img/halloween-2837936.png') no-repeat center fixed;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -14,69 +14,76 @@ body {
 }
 .heading {
     padding: 1rem;
+    font-size: 1.5rem;
     margin-top: 1rem;
-    font-size: 4rem;
     font-weight: 700;
-    color: rgb(15, 25, 26);
-    text-shadow: 0px 3px 0px #b2a98f,
+    color: rgb(12, 12, 15);
+    text-shadow: 0px 3px 5px #cf9a38,
                  0px 14px 10px rgba(0,0,0,0.15),
                  0px 24px 2px rgba(0,0,0,0.1),
                  0px 34px 30px rgba(0,0,0,0.1);
 }
 
 .bg-cards {
-    margin: 3rem 2rem 0;
-    width: 60vw;
-    background-color: rgba(63, 97, 129, 0.637);
-    padding-bottom: 2rem;
-    border-radius: 2%;
-    box-shadow: 5px 5px 5px 5px rgba(27, 28, 29, 0.603);
+    margin: 3rem 0 0;
+    width: 90vw;
+    /*background-color: rgba(63, 97, 129, 0.637);*/
+    background-color: rgba(201, 148, 35, 0.377);
+    padding: 0 0 2rem;
+    /*box-shadow: 5px 5px 5px 5px rgba(27, 28, 29, 0.603);*/
+
+    border: 1px solid #ad8a2a;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px #ad8a2a;
 }
+.card-row {
+    margin: 0;
+}
+
+
 
 .card {
     border: 2px solid rgb(241, 240, 236);
     position: relative;
     margin: 2rem 0 0;
-    width: 12rem;
-    height: 10rem;
+    width: 5rem;
+    height: 5rem;
 }
-
-/*.card:hover {
-    box-shadow: 3px 3px 3px #b2a98f ;
-}*/
 
 .front {
     background-color: black;
-    background: url('https://c4.wallpaperflare.com/wallpaper/672/320/912/how-to-train-your-dragon-toothless-how-to-train-your-dragon-print-wallpaper-preview.jpg') no-repeat center center;
+    /*background: url('https://c4.wallpaperflare.com/wallpaper/672/320/912/how-to-train-your-dragon-toothless-how-to-train-your-dragon-print-wallpaper-preview.jpg') no-repeat center center;*/
+    background: url('../img/witch-155291_1280.png') no-repeat center center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    filter:  grayscale(100%);
-    cursor: pointer;
+    filter:  grayscale(80%);
+    /*cursor: pointer;*/
     transition: ease-in-out .5s;
 }
 
 .front:hover {
-    box-shadow: 3px 3px 3px rgba(14, 13, 11, 0.616);
-    filter: none;
+    box-shadow: 0px 0px 20px rgba(14, 13, 11, 0.616);
+    filter: grayscale(15%);
     transition: ease-in-out .5s;
 }
 
 .back {
-    background-color: #3770ac9f;
+    background-color: #182c419f;
 }
 
 .correct {
-    background-color: rgba(66, 124, 66, 0.658);
+    background-color: rgba(40, 82, 40, 0.658);
     border: 2px solid rgba(178, 169, 143, 0.897);
     cursor: default;
 }
 
-
 .imgClass, .memoryImg {
-    max-height: 9rem;
+    max-height: 8rem;
     text-align: center;
+    margin-top: 1rem;
+    filter: grayscale(30%);
 
 }
 
@@ -112,3 +119,34 @@ body {
 .hidden {
     display: none;
 }
+
+
+@media (min-width: 481px){
+    
+    .heading {
+        font-size: 3rem;
+    }
+
+    .card {
+        width: 11rem;
+        height: 11rem;
+    }
+}
+
+@media (min-width: 769px) {
+    
+    .heading {
+        font-size: 4.5rem;
+    }
+
+    .bg-cards {
+        width: 60vw;
+        margin: 2rem 2rem 0;
+    }
+
+    .card {
+        width: 11rem;
+        height: 11rem;
+    }
+}
+
