@@ -29,7 +29,7 @@
     </div>
 
     <!--Game Over Modal-->
-    <div class="modal fade" id="game-over-modal" tabindex="-1" role="dialog">
+    <div class="modal" id="game-over-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -48,15 +48,16 @@
         </div>
     </div>
     
-    
+    <h1 class="heading col-12 mx-auto">How To Find Your Dragon!</h1>
     <div class="container-fluid mx-auto bg-cards">
-        <h1 class="heading col-12 mx-auto">How To Find Your Dragon!</h1>
-
-        <div class="container">
+        
+        
+        <button class="btn btn-start btn-success" id="start-btn">Start Game</button>
+        <div class="container-fluid hidden timer-container col-1 mx-auto">
             <span id="timer">
-              <span id="time">59</span>     
+              <span id="time">30</span>     
             </span>
-        </div>
+        </div>  
 
         <div class="row offset-1 col-10">
             <div class="col-lg-4">
@@ -86,10 +87,19 @@
     
     $(document).ready(function() {
 
-        initializeGame();
         let flippedCards = [];
-
-        //Function 1 - Initialize Game
+        var counter = 30;  
+        
+        preGame();      
+        
+        function preGame() {
+            $('#start-btn').click(function() {
+                initializeGame();
+                $('.btn-start').toggle();
+                $('.timer-container').toggleClass('hidden');
+            });    
+        }
+        
         function initializeGame() {
 
             let creaturesArray = [0, 0, 1, 1, 2, 2];
@@ -111,26 +121,27 @@
                 
                 $(this).html("<img class='memoryImg img-"+indexArrayShuffled[index]+"' style='display: none;' src='"+creaturesImages[indexArrayShuffled[index]]+"'>");
             
-            setTimeout(startTimer, 2000);
-            }); 
-        }
-
-        function startTimer() {
             
+            }); 
+            startTimer();
+        }
+        
+        function startTimer() {
+            console.log("Start");
             //https://jsfiddle.net/satyasrinivaschekuri/y03m54Le/
             
-            var counter = 10;
             var interval = setInterval(function() {
                 counter--;
 
-                if (counter <= 0) {
+                if (counter < 0) {
                         clearInterval(interval);
-                    $('#timer').html("0"); 
+                    gameFinished(); 
                     return;
                 }else{
                     $('#time').text(counter);
                 console.log("Timer --> " + counter);
                 }
+                
             }, 1000);
         }
 
@@ -185,16 +196,18 @@
                     
         function gameFinished() {
             
-            var success = $('.front').length === 0 && $('#time').text() > 0;
-            var gameOver = $('.front').length > 0 && $('#time').text() < 1; //not working as expected
+            var success = $('.front').length === 0 && counter > 0;
+            var gameOver = $('.front').length > 0 && counter <= 0; console.log(gameOver);
 
             if (success) {
                 $('#success-modal').show();
-                //stop startTimer here
+                
             } else if (gameOver) {
                 $('#game-over-modal').show();
+                
             }
         }
+    
     });
 
     </script>
