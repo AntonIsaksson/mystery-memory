@@ -7,7 +7,10 @@ $(document).ready(function () {
     let currentLevel = 0;
 
     setUpGame();
-
+    nextLevel();
+    
+    
+    
     function setUpGame() {
         
         $('#start-btn').click(function () {
@@ -49,9 +52,18 @@ $(document).ready(function () {
         $('#my-cards').html('');
         for (let index = 0; index < indexArrayShuffled.length; index++) {
             const element = indexArrayShuffled[index];
-
-            var markUp = '<div class="col-4"><div class="card front mx-auto col-12"></div></div>';
-            $('#my-cards').append(markUp);
+            
+            var markUp = '<div class="card-container"><div class="card mx-auto front col-12"></div></div>';
+                if (currentLevel === 0) {
+                    markUp = '<div class="card-container col-4"><div class="level-1 card front mx-auto col-12"></div></div>';
+                }else if (currentLevel === 1) {
+                    markUp = '<div class="card-container col-3"><div class="level-2 card front mx-auto col-12"></div></div>';
+                }else if (currentLevel === 2) {
+                    markUp = '<div class="card-container col-3"><div class="level-3 card front mx-auto col-12"></div></div>';
+                }
+                
+                $('#my-cards').append(markUp);
+        
         }
 
         //Assigning cards their indexes
@@ -68,18 +80,22 @@ $(document).ready(function () {
         startTimer();
     }
 
-    $('#next-level-btn').on('click', function () {
-        var noOfLevels = numberOfCardsInLevel.length;
-        if (currentLevel >= noOfLevels)
-            alert("You have already reached max level. Reload the page to play again!"); // Only for error handling
-        else {
-            // To next Level
-            currentLevel++;
-            initializeGame();
-            $('#time').html("30");
-        }
-    });
 
+    function nextLevel() {
+    
+        $('#next-level-btn').on('click', function () {
+            var noOfLevels = numberOfCardsInLevel.length;
+            if (currentLevel >= noOfLevels)
+                alert("You have already reached max level. Reload the page to play again!"); // Only for error handling
+            else {
+                // To next Level
+                currentLevel++;
+                initializeGame();
+                $('#time').html("30");
+                $('.front').css("cursor", "pointer");
+            }
+        });
+    }
     function startTimer() {
         console.log("Start");
         //https://jsfiddle.net/satyasrinivaschekuri/y03m54Le/
@@ -139,7 +155,7 @@ $(document).ready(function () {
 
         }
 
-        setTimeout(gameFinished, 2000);
+        setTimeout(gameFinished, 1000);
 
     }
 

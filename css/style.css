@@ -14,7 +14,7 @@ body {
 .heading {
     padding: 1rem;
     font-size: 2rem;
-    margin-top: 1.5rem;
+    
     font-weight: 700;
     color: rgb(43, 29, 9);
     text-shadow: 0px 3px 4px #ffa909,
@@ -26,9 +26,8 @@ body {
 .bg-cards {
     margin: 2rem 0 0;
     width: 90%;
-    /*background-color: rgba(63, 97, 129, 0.637);*/
     background-color: rgba(201, 148, 35, 0.377);
-    padding: 0 0 2rem;
+    padding-top: 1rem;
     /*box-shadow: 5px 5px 5px 5px rgba(27, 28, 29, 0.603);*/
 
     border: 1px solid #ad8a2a;
@@ -41,13 +40,12 @@ body {
 
 .card {
     border: 2px solid rgb(241, 240, 236);
-    width: 4.5rem;
-    height: 4.5rem;
+    /*width: 4.5rem;*/
+    /*height: 4.5rem;*/
 }
 
 .front {
     background-color: black;
-    /*background: url('https://c4.wallpaperflare.com/wallpaper/672/320/912/how-to-train-your-dragon-toothless-how-to-train-your-dragon-print-wallpaper-preview.jpg') no-repeat center center;*/
     background: url('../img/witch-155291_1280.png') no-repeat center center;
     background-size: cover;
     -webkit-background-size: cover;
@@ -75,11 +73,10 @@ body {
 }
 
 .imgClass, .memoryImg {
-    max-height: 8rem;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: .5rem;
     filter: grayscale(30%);
-
+    max-height: 80%;
 }
 
 .modal {
@@ -100,13 +97,16 @@ body {
 }
 
 .timer-container {
-    background-color: rgba(241, 240, 236, 0.37);
+    background-color: rgba(235, 190, 14, 0.37);
+    border: 1px solid #ad8a2a;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px #ad8a2a;
     
 }
 
 #timer, #time {
     color: rgb(241, 240, 236);
-    font-size: 1.7rem;
+    font-size: 1.62rem;
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -114,18 +114,38 @@ body {
     display: none;
 }
 
+.card-container {
+    padding: 0;
+    margin: 0;
+}
+
+.level-1 {
+    width: 11rem;
+    height: 11rem;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.level-2 {
+    width: 10rem;
+    height: 10rem;
+}
+
+.level-3 {
+    width: 8rem;
+    height: 8rem;
+}
+
 
 @media (min-width: 481px){
     
     .heading {
         font-size: 3rem;
-        margin-top: 3rem;
+        
     }
 
     .card {
-        width: 11rem;
-        height: 11rem;
-        margin-top: 2rem;
+        margin-bottom: 1rem;
     }
 }
 
@@ -137,13 +157,13 @@ body {
     }
 
     .bg-cards {
-        width: 60vw;
+        width: 45rem;
         margin: 2rem 0 0;
     }
 
-    .card {
+    /*.card {
         width: 11rem;
         height: 11rem;
-    }
+    }*/
 }
 
