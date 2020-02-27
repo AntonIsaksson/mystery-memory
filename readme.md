@@ -83,7 +83,7 @@ Since all of my User Stories are, in the end, a matter of taste, I have a diffic
 
 ### Deployment ###
 
-The website is hosted using Github pages. To check out the live website, follow this link: https://github.com/AntonIsaksson/mystery-memory
+The website is hosted using Github pages. To check out the live website, follow this link: https://antonisaksson.github.io/mystery-memory/
 ### Acknowledgements ###
 
 Inspiration was taken from this youtube tutorial: https://www.youtube.com/watch?v=Eq4bUSWGv1Y
