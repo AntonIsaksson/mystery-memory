@@ -14,199 +14,76 @@
     <!--Success Modal-->
     <div class="modal" id="success-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title mx-auto">Nice Job!</h3>  
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title mx-auto">Nice Job!</h3>
+                </div>
+                <div class="modal-body">
+                    <p id="success-text">Move on to the next round</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="mx-auto btn btn-info level-btn" id="next-level-btn">--</button>
+                    <button type="button" class="mx-auto btn btn-info level-btn" id="start-over-btn">Play again</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>You move on to the next round</p>
-              </div>
-            <div class="modal-footer">
-              <button type="button" class="mx-auto btn btn-info"><a href="file:///C:/Users/ASUS/Documents/Visual%20Coding/milestone-project-2/mystery-memory/level2.html">Level 2</a></button>
-            </div>
-          </div>
         </div>
     </div>
 
     <!--Game Over Modal-->
     <div class="modal" id="game-over-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Game Over</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Game Over</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Press the button to try again!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="restart-btn">Restart</button>
+                </div>
             </div>
-            <div class="modal-body">
-              <p>Press the button to try again!</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary"><a href="/mystery-memory/index.html">Restart</a></button>
-            </div>
-          </div>
         </div>
     </div>
-    
+
     <h1 class="heading col-12 mx-auto">Halloween Memory</h1>
+    <button class="btn btn-start btn-success" id="start-btn">Start Game</button>
+    
+    <div class="container-fluid hidden timer-container col-1 mx-auto">
+        <span id="timer">
+            <span id="time"> 30 </span>
+        </span>
+    </div>
+    
     <div class="container-fluid mx-auto bg-cards">
-        
-        
-        <button class="btn btn-start btn-success" id="start-btn">Start Game</button>
-        <div class="container-fluid hidden timer-container col-1 mx-auto">
-            <span id="timer">
-              <span id="time">30</span>     
-            </span>
-        </div>  
 
-        <div class="row card-row col-12">
-            <div class="col-4 card-container">
-                <div class="card front ml-auto col-12"></div>
-            </div>
-            <div class="col-4 ">
+        <div id="my-cards" class="row mx-auto">
+            <div class="col-4 mx-auto">
                 <div class="card front mx-auto col-12"></div>
             </div>
-            <div class="col-4 ">
-                <div class="card front mr-auto col-12"></div>
-            </div>
-        </div>
-        <div class="row card-row col-12">
-            <div class="col-4 ">
-                <div class="card front ml-auto col-12"></div>
-            </div>
-            <div class="col-4 ">
+            <div class="col-4 mx-auto">
                 <div class="card front mx-auto col-12"></div>
             </div>
-            <div class="col-4 ">
-                <div class="card front mr-auto col-12"></div>
+            <div class="col-4 mx-auto">
+                <div class="card front  mx-auto col-12"></div>
+            </div>
+            <div class="col-4 mx-auto">
+                <div class="card front mx-auto col-12"></div>
+            </div>
+            <div class="col-4 mx-auto">
+                <div class="card front mx-auto col-12"></div>
+            </div>
+            <div class="col-4 mx-auto">
+                <div class="card front mx-auto col-12"></div>
             </div>
         </div>
     </div>
 
-    <script>
+
+    <script src="./js/main.js"></script>
     
-    $(document).ready(function() {
-
-        let flippedCards = [];
-        var counter = 30;  
-        
-        preGame();      
-        
-        function preGame() {
-            $('#start-btn').click(function() {
-                initializeGame();
-                $('.btn-start').toggle();
-                $('.timer-container').toggleClass('hidden');
-                $('.front').css("cursor", "pointer");
-            });    
-        }
-        
-        function initializeGame() {
-
-            let creaturesArray = [0, 0, 1, 1, 2, 2,];
-            let creaturesImages = ["./img/death.png", "./img/ghost.png", "./img/scarecrow.png", "./img/squirrel.png", "./img/bigmouth.png"];
-
-            indexArrayShuffled = shuffleArray(creaturesArray);
-            
-
-            //Assigning cards their indexes
-            $('.card').each(function(index) {
-                $(this).attr('data-card-index', indexArrayShuffled[index]);
-            
-                //onClick eventlisteners to all cards
-                $(this).on('click', flipCard);
-                
-                $(this).html("<img class='memoryImg img-"+indexArrayShuffled[index]+"' style='display: none;' src='"+creaturesImages[indexArrayShuffled[index]]+"'>");
-            
-            
-            }); 
-            startTimer();
-        }
-        
-        function startTimer() {
-            console.log("Start");
-            //https://jsfiddle.net/satyasrinivaschekuri/y03m54Le/
-            
-            var interval = setInterval(function() {
-                counter--;
-
-                if (counter < 0) {
-                        clearInterval(interval);
-                    gameFinished(); 
-                    return;
-                }else{
-                    $('#time').text(counter);
-                console.log("Timer --> " + counter);
-                }
-                
-            }, 1000);
-        }
-
-        function flipCard() {
-
-            //Push the card index to the array only if the card isn't green already
-            flippedCards.push( $(this) );
-            $(this).toggleClass('back').toggleClass('front');
-            //Show image
-            $(this).find('img').css('display','inline');
-            //Remove the event listener so we don't register it twice
-            $(this).off('click', flipCard);
-
-            let sameCardIndex = false;
-
-            if ( flippedCards.length > 1 && flippedCards[0].data('card-index') == flippedCards[1].data('card-index') ) {
-                sameCardIndex = true;
-            }
-
-            //User chooses the correct cards
-            if ( (flippedCards.length > 1) && sameCardIndex ) {
-
-                flippedCards.forEach(card => {
-                    card.addClass('correct');
-                });
-
-                flippedCards = [];
-
-            //Wrong cards or user clicks same card twice
-            } else if ( flippedCards.length > 1 && !sameCardIndex) {
-                
-                setTimeout(() => {
-                    flippedCards.forEach(element => {
-                        //Add the event listener again
-                        element.on('click', flipCard);
-                        element.toggleClass('back').toggleClass('front');
-                        element.find('img').css('display','none');
-                    });
-                    flippedCards = [];
-                }, 500);
-
-            }
-
-            setTimeout(gameFinished, 2000);
-
-        }
-
-        function shuffleArray(arr) {
-            for(var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
-            return arr;
-        }
-                    
-        function gameFinished() {
-            
-            var success = $('.front').length === 0 && counter > 0;
-            var gameOver = $('.front').length > 0 && counter <= 0; console.log(gameOver);
-
-            if (success) {
-                $('#success-modal').show();
-                
-            } else if (gameOver) {
-                $('#game-over-modal').show();
-                
-            }
-        }
-    
-    });
-
-    </script>
 </body>
 </html>

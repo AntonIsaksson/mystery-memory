@@ -4,8 +4,7 @@ body {
     box-sizing: border-box;
     text-align: center;
     font-family: Papyrus, fantasy;;
-    margin: 0;
-    /*background: url('https://i.pinimg.com/originals/95/88/22/958822d27856da0f0bfd921a3921f4b9.jpg') no-repeat center fixed;*/
+    margin: 0!important;
     background: url('../img/halloween-2837936.png') no-repeat center fixed;
     background-size: cover;
     -webkit-background-size: cover;
@@ -14,19 +13,19 @@ body {
 }
 .heading {
     padding: 1rem;
-    font-size: 1.5rem;
-    margin-top: 1rem;
+    font-size: 2rem;
+    margin-top: 1.5rem;
     font-weight: 700;
-    color: rgb(12, 12, 15);
-    text-shadow: 0px 3px 5px #cf9a38,
+    color: rgb(43, 29, 9);
+    text-shadow: 0px 3px 4px #ffa909,
                  0px 14px 10px rgba(0,0,0,0.15),
                  0px 24px 2px rgba(0,0,0,0.1),
                  0px 34px 30px rgba(0,0,0,0.1);
 }
 
 .bg-cards {
-    margin: 3rem 0 0;
-    width: 90vw;
+    margin: 2rem 0 0;
+    width: 90%;
     /*background-color: rgba(63, 97, 129, 0.637);*/
     background-color: rgba(201, 148, 35, 0.377);
     padding: 0 0 2rem;
@@ -36,18 +35,14 @@ body {
     border-radius: 4px;
     box-shadow: 0px 0px 5px #ad8a2a;
 }
-.card-row {
-    margin: 0;
-}
+
 
 
 
 .card {
     border: 2px solid rgb(241, 240, 236);
-    position: relative;
-    margin: 2rem 0 0;
-    width: 5rem;
-    height: 5rem;
+    width: 4.5rem;
+    height: 4.5rem;
 }
 
 .front {
@@ -102,12 +97,11 @@ body {
 }
 
 .btn-start {
-    margin-top: 1rem;
 }
+
 .timer-container {
     background-color: rgba(241, 240, 236, 0.37);
-    border-radius: 50%;
-    margin-top: 2rem;
+    
 }
 
 #timer, #time {
@@ -125,11 +119,13 @@ body {
     
     .heading {
         font-size: 3rem;
+        margin-top: 3rem;
     }
 
     .card {
         width: 11rem;
         height: 11rem;
+        margin-top: 2rem;
     }
 }
 
@@ -137,11 +133,12 @@ body {
     
     .heading {
         font-size: 4.5rem;
+        
     }
 
     .bg-cards {
         width: 60vw;
-        margin: 2rem 2rem 0;
+        margin: 2rem 0 0;
     }
 
     .card {
